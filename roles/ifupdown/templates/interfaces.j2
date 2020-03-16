@@ -1,0 +1,22 @@
+{% set intvars = interfaces[ansible_hostname] %}
+# /etc/network/interfaces template for servers ({{ansible_hostname}})
+
+{% for iface in intvars['loopback'] %}
+auto lo
+iface lo inet loopback
+    address {{ intvars['loopback'][iface].ip }}
+    clagd-vxlan-anycast-ip {{ intvars['anycast'][iface].ip }}
+{% endfor %}
+
+{% for iface in intvars['port'] %}
+auto {{ iface }}
+iface {{ iface }} inet static
+    address {{ intvars['port'][iface].ip }}
+#{% if {{ anycast }} == true %}
+#    clagd-vxlan-anycast-ip {{ intvars['anycast'][iface].ip }}
+#{% endif %}
+    mtu 9152
+{% endfor %}
+
+{% if networks[network].source == ansible_hostname %}
+{% endif %}

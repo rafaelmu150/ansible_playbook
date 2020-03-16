@@ -1,0 +1,37 @@
+
+#/etc/network/interfaces
+networks:
+
+interface:
+   leaf01:
+     loopback: "0.0.0.1"
+     anycast: "1.1.12.1"
+     port:
+       swp1:
+         ip:"100.0.0.1/30"
+       swp2:
+         ip:"100.0.0.5/30"
+   
+   leaf02:
+     loopback: "0.0.0.2"
+     anycast: "1.1.12.1"
+     port:
+       swp1:
+         ip:"100.0.0.9/30"
+       swp2:
+         ip:"100.0.0.13/30"   
+   leaf03:
+   
+   leaf03:
+   
+   leaf04:
+   
+   exit01:
+   
+   exit02:
+   
+   spine01:
+   
+   spine02:
+   
+   
